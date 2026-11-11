@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101010">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PVR Play">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <title>PVR Play</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin:0; width:100%; height:100%; background:#101010; color:#fff;
+      font:15px system-ui,sans-serif; }
+    #frame { display:block; border:0; width:100%; height:100%; height:100dvh; background:#101010; }
+    #fallback { padding:24px; text-align:center; }
+    a { color:#8ab4ff; }
+  </style>
+</head>
+<body>
+  <iframe id="frame" src="https://pvrplay.live"
+    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+    allowfullscreen referrerpolicy="strict-origin-when-cross-origin"
+    title="PVR Play"></iframe>
+  <noscript><div id="fallback">Enable JavaScript to open PVR Play.</div></noscript>
+  <script>
+    // This page intentionally stays on the PWA's origin and embeds the site.
+    // The destination may refuse iframe embedding; if so, use the link below.
+    const frame = document.getElementById("frame");
+    frame.addEventListener("error", () => {
+      document.body.innerHTML = '<div id="fallback"><h2>PVR Play could not be embedded</h2><p>The website may block being shown inside another page.</p><p><a href="https://pvrplay.live" target="_blank" rel="noopener">Open PVR Play in Safari</a></p></div>';
+    });
+  </script>
+</body>
+</html>
